@@ -23,7 +23,7 @@ public class Menu {
                         choice = input.nextLine();
                         switch (choice) {
                             case "1": System.out.println("starting now, good luck !\n");
-                            //Game.start();
+                            GameClass.start();
                             break;
                             case "2": System.out.println("rules are simple:\n" +
                             "there is an english word which consists of 5 letters\n" + 
