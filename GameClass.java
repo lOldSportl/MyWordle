@@ -11,30 +11,31 @@ public class GameClass {
 
   static void start() {
     Scanner in = new Scanner(System.in);
-    String correctWord = randomWord(); // 
+    String correctWord = randomWord(); // загаданное слово
     char[] correctArray = correctWord.toCharArray();
-    char[] wrongArray = new char[26];
-    char[] hiddenWord = new char[]{'*','*','*','*','*'};
+    char[] wrongArray = new char[26]; // массив неправильных букв
+    char[] hiddenWord = new char[]{'*','*','*','*','*'}; // слово, которое отображается
     System.out.println(correctWord);
-    String word = "";
+    String word = ""; // введеное слово
     int attempt = 1;
     do {
     System.out.print(java.util.Arrays.toString(hiddenWord) + "\nEnter your word: ");
     word = in.nextLine();
     char[] wordArray = word.toCharArray();
-    if (checkWord(wordArray, attempt, correctArray, hiddenWord, wrongArray)) {
+    if (checkWord(wordArray, correctArray, hiddenWord, wrongArray)) {
       System.out.println(
-          "Congrats ! you succsessfully guessed the word with " + attempt + " attempts.");
+          "Congrats ! you succsessfully guessed the word");
       break;
     }
     else 
     {
-      attempt++;
       System.out.println("Incorrect ! here is what you have guessed: " + java.util.Arrays.toString(hiddenWord) + "\nAttempt: " + attempt + 
       "\nAttempts left: " + (6 - attempt) + "\nThese letters are wrong: " + java.util.Arrays.toString(wrongArray));
+      attempt++;
     }
-  } while(attempt < 6);
-    System.out.println("Game over !\n" + "Your stats:\n" + "Guessed: " + java.util.Arrays.toString(hiddenWord) + "\nAttempts taken: " + attempt);
+  } while(attempt <= 6);
+    System.out.println("Game over !" + " Your stats:\n" + "The word was: " + correctWord + "\nAttempts taken: " + (attempt));
+
   }
 
   static String randomWord() {
@@ -81,8 +82,9 @@ public class GameClass {
     return line;
   }
 
-  public static boolean checkWord(char[] wordArray, int attempt, char[] correctArray, char[] hiddenWord, char[] wrongArray) {
-    if (wordArray.equals(correctArray)) {
+  public static boolean checkWord(char[] wordArray, char[] correctArray, char[] hiddenWord, char[] wrongArray) {
+    //System.out.println(new String(wordArray) + "\n" + new String(correctArray));
+    if (new String(wordArray).equals(new String(correctArray))) {
       return true;
     } 
     else {
