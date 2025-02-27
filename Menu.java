@@ -4,7 +4,6 @@ public class Menu {
     public static void printMenu() {
         Scanner input = new Scanner(System.in);
         String  choice = "";
-        do {
         System.out.println("\r\n" + //
                         "__/\\\\\\_______/\\\\\\\\\\_______/\\\\\\\\\\\\____________/\\\\\\______/\\\\\\\\\\\\\\\\\\\\\\____________________________________________________________/\\\\\\_        \r\n" + //
                         " _\\/\\\\\\_____/\\\\\\///\\\\\\____\\////\\\\\\___________\\/\\\\\\____/\\\\\\/////////\\\\\\_________________________________________________________\\/\\\\\\_       \r\n" + //
@@ -33,8 +32,9 @@ public class Menu {
                             "<LETTER> means that your guess absolutely correct, my congrats !\n" + 
                             "also keep in mind, that incorrect letters will be displayed\n" +
                             "good luck !");
-                            default: System.out.println(""); break;
+                            GameClass.start();
+                            default: System.out.println(""); 
+                            break;
                         }
-                    } while (!choice.isEmpty());
     }
 }
